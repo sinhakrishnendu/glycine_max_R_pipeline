@@ -85,7 +85,7 @@ ggplot(df_plot, aes(GC3, GC12)) +
   geom_point() +
   geom_smooth(method = "lm")+
   stat_poly_eq(use_label(c('eq','R2','p.value')))+
-  theme_bw()
+  theme_classic()
 #
 #regression data of neutrality plot
 model <- lm(GC12~GC3,data = df_plot)
@@ -111,9 +111,10 @@ ggplot()+
 #
 #hist
 ggplot()+
-  geom_histogram(data = df_plot,aes(x = eNc_Nc_hist),binwidth = 0.02)+
+  geom_histogram(data = df_plot,aes(x = eNc_Nc_hist),
+                 binwidth = 0.02,color = 'white')+
   xlab('(Nc_exp-Nc_obs)/Nc_exp')+
-  ylab('Frequency')
+  ylab('Frequency')+
   theme_classic()
 #
 #
