@@ -123,3 +123,22 @@ hist(df_plot$eNc_Nc_hist,
      ylim = c(0,30),
      border = 'white',
      col = 'black')
+#
+hist_data <- hist(df_plot$eNc_Nc_hist, 
+                  xlab = '(Nc_exp-Nc_obs)/Nc_exp',
+                  main = '', breaks = 5,
+                  ylim = c(0,70))
+text(hist_data$mids, hist_data$counts, 
+     labels = round(hist_data$counts / sum(hist_data$counts) * 100,1), 
+     adj = c(0.5, -0.5))
+#
+sig_test <- wilcox.test(df_plot$Nc,df_plot$Nc_exp,alternative = 'less')
+sig_test
+sig_test_1 <- wilcox.test(df_plot$Nc,df_plot$Nc_exp,alternative = 'greater')
+sig_test_1
+#
+chisq.test(df_plot$Nc_exp)
+#Kolmogorov-Smirnov test
+ks.test(df_plot$Nc,df_plot$Nc_exp)
+ks.test(df_plot$Nc,expEnc$Nc_exp)
+
